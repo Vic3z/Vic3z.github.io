@@ -131,3 +131,22 @@ function checkGuess() {
         }
     }
 }
+
+
+
+document.querySelectorAll('.keyboard-button').forEach(button => {
+    button.addEventListener('click', function(event) {
+        const key = event.target.textContent.trim();
+
+        let keyValue = key;
+        if (key === 'Del') {
+            keyValue = 'Backspace';
+        } 
+        const keyupEvent = new KeyboardEvent('keyup', {
+            key: keyValue,
+            bubbles: true,
+            cancelable: true
+        });
+        document.dispatchEvent(keyupEvent);
+    });
+});
