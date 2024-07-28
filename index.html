@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LetterRank</title>
     <link rel="stylesheet" href="style.css">
@@ -58,14 +59,14 @@
             },
             options: {
         scales: {
-            x: {  // Cambiato da 'y' a 'x' per iniziare da zero
+            x: {
                 beginAtZero: true,
-                grid: {  // Disabilita la griglia di sfondo
+                grid: {
                     display: false
                 }
             },
-            y: {  // Cambiato da 'x' a 'y' per grafico orizzontale
-                grid: {  // Disabilita la griglia di sfondo
+            y: {
+                grid: {
                     display: false
                 }
             }
@@ -76,9 +77,7 @@
     </script>
 
     <h1> Letter Rank </h1>
-    <h5>Guess a 5 letter word, if a letter in your guess comes before the correct letter alphabetically, it will be
-        highlighted in yellow. <br> If it comes after, it will be highlighted in orange. Keep guessing until you find
-        the correct word! </h5>
+    <h5>Indovina una parola di 5 lettere. Se una lettera nella tua ipotesi viene prima della lettera corretta in ordine alfabetico, verrà evidenziata in arancione.<br> Se viene dopo, verrà evidenziata in giallo.<br> Continua a indovinare finché non trovi la parola corretta! </h5>
 
     <div id="board">
         <script src="game.js" type="module" id="game-script"></script>
