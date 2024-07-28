@@ -11,10 +11,9 @@ LetterRank is a word-guessing game where the player tries to guess a 5-letter wo
 4. [Dependencies](#dependencies)
 5. [Configuration](#configuration)
 6. [Documentation](#documentation)
-7. [Examples](#examples)
-8. [Troubleshooting](#troubleshooting)
-9. [Contributors](#contributors)
-10. [License](#license)
+7. [Troubleshooting](#troubleshooting)
+8. [Contributors](#contributors)
+9. [License](#license)
 
 ## Installation
 To run the game locally, follow these steps:
@@ -67,7 +66,7 @@ If the game is not functioning as expected, ensure the following:
 - JavaScript is enabled in your web browser.
 
 ## Contributors
-- **Your Name** - Initial work - [Your GitHub Profile](https://github.com/Vic3z)
+- **Vincenzo Santonicola** - Initial work - [Your GitHub Profile](https://github.com/Vic3z)
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
