@@ -1,54 +1,124 @@
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buonasera Simona</title>
+    <title>LetterRank</title>
     <link rel="stylesheet" href="style.css">
+    <script src="cookies.js"></script>
 </head>
 <body>
+    <svg id="leaderboard" width="2em" height="2em" viewBox="0 0 24 24">
+        <path fill="black" d="M16 11V3H8v6H2v12h20V11zm-6-6h4v14h-4zm-6 6h4v8H4zm16 8h-4v-6h4z" />
+    </svg>
 
-    <h1> Wordle Clone </h1>    
-    <h3>Guess a 5 letter word, if a letter in your guess comes before the correct letter alphabetically, it will be highlighted in yellow. <br> If it comes after, it will be highlighted in orange. Keep guessing until you find the correct word! </h3>
+    <div class="overlay" id="chart-overlay">
+        <div class="overlay-content">
+            <span class="close-btn" id="close-btn">&times;</span>
+            <canvas id="leaderboard-cont"></canvas>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.getElementById('leaderboard').addEventListener('click', function () {
+            document.getElementById('chart-overlay').style.display = 'flex';
+            renderChart();
+        });
+
+    document.getElementById('close-btn').addEventListener('click', function() {
+        document.getElementById('chart-overlay').style.display = 'none';
+    });
+
+    function renderChart() {
+        const container = document.getElementById('leaderboard-cont').getContext('2d')
+        const occArray = [];
+        let storedArray = localStorage.getItem('gameResults');
+        storedArray = storedArray ? JSON.parse(storedArray) : [];
+        console.log(storedArray)
+        let k = 0
+        for (let num = 0; num <= 5; num++) {
+        for (let i = 0; i < storedArray.length; i++) {
+        if (storedArray[i] === num) {
+            k += 1
+        }
+    }
+    occArray.push(k)
+    k = 0
+}
+        console.log(occArray)
+        
+        new Chart(container, {
+            type: 'bar',
+            data: {
+                labels:['1','2','3','4','5','6'],
+                datasets: [{
+                    label: 'Tentativi',
+                    data:occArray,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+        scales: {
+            x: {  // Cambiato da 'y' a 'x' per iniziare da zero
+                beginAtZero: true,
+                grid: {  // Disabilita la griglia di sfondo
+                    display: false
+                }
+            },
+            y: {  // Cambiato da 'x' a 'y' per grafico orizzontale
+                grid: {  // Disabilita la griglia di sfondo
+                    display: false
+                }
+            }
+        }
+    }
+        })
+    }
+    </script>
+
+    <h1> Letter Rank </h1>
+    <h5>Guess a 5 letter word, if a letter in your guess comes before the correct letter alphabetically, it will be
+        highlighted in yellow. <br> If it comes after, it will be highlighted in orange. Keep guessing until you find
+        the correct word! </h5>
+
     <div id="board">
+        <script src="game.js" type="module" id="game-script"></script>
     </div>
-
-<script src="game.js" type="module"></script>
-
-<div id="keyboard-cont">
-    <div class="first-row">
-        <button class="keyboard-button">q</button>
-        <button class="keyboard-button">w</button>
-        <button class="keyboard-button">e</button>
-        <button class="keyboard-button">r</button>
-        <button class="keyboard-button">t</button>
-        <button class="keyboard-button">y</button>
-        <button class="keyboard-button">u</button>
-        <button class="keyboard-button">i</button>
-        <button class="keyboard-button">o</button>
-        <button class="keyboard-button">p</button>
+    <div id="keyboard-cont">
+        <div class="first-row">
+            <button class="keyboard-button">q</button>
+            <button class="keyboard-button">w</button>
+            <button class="keyboard-button">e</button>
+            <button class="keyboard-button">r</button>
+            <button class="keyboard-button">t</button>
+            <button class="keyboard-button">y</button>
+            <button class="keyboard-button">u</button>
+            <button class="keyboard-button">i</button>
+            <button class="keyboard-button">o</button>
+            <button class="keyboard-button">p</button>
+        </div>
+        <div class="second-row">
+            <button class="keyboard-button">a</button>
+            <button class="keyboard-button">s</button>
+            <button class="keyboard-button">d</button>
+            <button class="keyboard-button">f</button>
+            <button class="keyboard-button">g</button>
+            <button class="keyboard-button">h</button>
+            <button class="keyboard-button">j</button>
+            <button class="keyboard-button">k</button>
+            <button class="keyboard-button">l</button>
+        </div>
+        <div class="third-row">
+            <button class="keyboard-button">Del</button>
+            <button class="keyboard-button">z</button>
+            <button class="keyboard-button">x</button>
+            <button class="keyboard-button">c</button>
+            <button class="keyboard-button">v</button>
+            <button class="keyboard-button">b</button>
+            <button class="keyboard-button">n</button>
+            <button class="keyboard-button">m</button>
+            <button class="keyboard-button">Enter</button>
+        </div>
     </div>
-    <div class="second-row">
-        <button class="keyboard-button">a</button>
-        <button class="keyboard-button">s</button>
-        <button class="keyboard-button">d</button>
-        <button class="keyboard-button">f</button>
-        <button class="keyboard-button">g</button>
-        <button class="keyboard-button">h</button>
-        <button class="keyboard-button">j</button>
-        <button class="keyboard-button">k</button>
-        <button class="keyboard-button">l</button>
-    </div>
-    <div class="third-row">
-        <button class="keyboard-button">Del</button>
-        <button class="keyboard-button">z</button>
-        <button class="keyboard-button">x</button>
-        <button class="keyboard-button">c</button>
-        <button class="keyboard-button">v</button>
-        <button class="keyboard-button">b</button>
-        <button class="keyboard-button">n</button>
-        <button class="keyboard-button">m</button>
-        <button class="keyboard-button">Enter</button>
-    </div>
-</div>
-
 </body>
+
 </html>

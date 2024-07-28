@@ -1,4 +1,4 @@
-import { WORDS } from "./words.js"
+import { WORDS } from "./it_words.js"
 
 const NUMBER_OF_GUESSES = 6
 let guessesRemaining = NUMBER_OF_GUESSES
@@ -113,11 +113,11 @@ function checkGuess() {
         setTimeout(() => {
             letter.style.backgroundColor = color
             letter.style.color = 'white'
-            shadeKeyBoard(letter.textContent, color)
         }, delay)
     }
     if (guessString === rightGuessString) {
         alert("You guessed right!")
+        addGameResult(guessesRemaining);
         guessesRemaining = 0
         return
     } else {
@@ -126,6 +126,7 @@ function checkGuess() {
         nextLetter = 0;
 
         if (guessesRemaining === 0) {
+            addGameResult(0);
             alert("You've run out of guesses! Game over!")
             alert(`The right word was: "${rightGuessString}"`)
         }
