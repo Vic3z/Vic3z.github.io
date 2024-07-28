@@ -34,7 +34,6 @@
         const occArray = [];
         let storedArray = localStorage.getItem('gameResults');
         storedArray = storedArray ? JSON.parse(storedArray) : [];
-        console.log(storedArray)
         let k = 0
         for (let num = 0; num <= 5; num++) {
         for (let i = 0; i < storedArray.length; i++) {
@@ -44,9 +43,7 @@
     }
     occArray.push(k)
     k = 0
-}
-        console.log(occArray)
-        
+}        
         new Chart(container, {
             type: 'bar',
             data: {

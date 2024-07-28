@@ -5,8 +5,6 @@ let guessesRemaining = NUMBER_OF_GUESSES
 let currentGuess = []
 let nextLetter = 0
 let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)]
-console.log(rightGuessString)
-
 function game() {
     let board = document.getElementById('board')
     for (let i = 0; i < NUMBER_OF_GUESSES; i++) {
